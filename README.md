@@ -1,1 +1,1 @@
-My first readme
+Reposirory for DevOps Bash Shell Scripts Project tasks
