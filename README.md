@@ -1,1 +1,1 @@
-Reposirory for DevOps Bash Shell Scripts Project tasks
+Repository for DevOps Bash Shell Scripts Project tasks
