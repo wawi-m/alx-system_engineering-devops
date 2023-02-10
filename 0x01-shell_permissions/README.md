@@ -1,1 +1,1 @@
-add owner execute permission
+6. adds execution permission to the owner, the group owner and the other users, to the file hello
