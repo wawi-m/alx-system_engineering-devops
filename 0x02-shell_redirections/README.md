@@ -20,4 +20,5 @@
 19.Replace all characters A and c from input to Z and e respectively
 20.Create a script that removes all letters c and C from input
 22.Write a script that displays all users and their home directories, sorted by users
-24.create file 24
+24.lists all the files with a .gif extension in the current directory and all its sub-directories
+21.Reverses its input
