@@ -8,3 +8,5 @@
 8.writes into the file ls_cwd_content the result of the command ls -la
 9.duplicates the last line of the file iacta
 10.deletes all the regular files with a .js extension
+12.displays the 10 newest files in the current directory
+11.counts the number of directories and sub-directories in the current directory
