@@ -12,3 +12,5 @@
 11.counts the number of directories and sub-directories in the current directory
 13.takes a list of words as input and prints only words that appear exactly once 
 1.displays a confused smiley 
+14.Display lines containing the pattern “root” from the file /etc/passwd 
+15.Display the number of lines that contain the pattern “bin” in the file /etc/passwd
