@@ -5,3 +5,6 @@
 5.Display the first 10 lines of /etc/passwd
 6.displays the third line of the file iacta
 7.It is a good file that cuts iron without making a noise
+8.writes into the file ls_cwd_content the result of the command ls -la
+9.duplicates the last line of the file iacta
+10.deletes all the regular files with a .js extension
