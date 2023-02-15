@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -n '$ % 2 == 1'
+paste - - | cut -f1
