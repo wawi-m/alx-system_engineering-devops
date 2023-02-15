@@ -3,6 +3,5 @@
 1.prints hello user, where user is the current Linux user
 add 2
 3.Create a script that counts the number of directories in the PATH
-2.Add /action to the PATH
 4.Create a script that lists environment variables
 5.Create a script that lists all local variables and environment variables, and functions
