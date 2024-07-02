@@ -1,11 +1,3 @@
-#create killmenow
-
-file { '/usr/local/bin/killmenow':
-  ensure  => present,
-  mode    => '755',  # Ensure executable permission
-  content => '#!/bin/bash\nwhile true; do sleep 2; done\n',
-}
-
 # kill a process
 
 exec{ 'kill_killmenow_process':
@@ -13,4 +5,5 @@ exec{ 'kill_killmenow_process':
   path        => ['/usr/bin', '/bin'],
   user        => 'root',
   refreshonly => true,
+  subscribe   => File['~/alx-system_engineering-devops/0x0A-configuration_management/killmenow'],
 }
