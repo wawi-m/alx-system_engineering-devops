@@ -8,9 +8,15 @@ apt-get install -y nginx
 # Create the index.html file with "Hello World!" content
 echo "Hello World!" > /var/www/html/index.html
 
-# Ensure Nginx is listening on port 80 and restart the service without using systemctl
-service nginx start
+# Start Nginx service using init.d script
+/etc/init.d/nginx start
 
+# Ensure Nginx is running
+if ! pgrep -x "nginx" > /dev/null
+then
+    echo "Nginx failed to start."
+    exit 1
+fi
 # Ensure the firewall allows traffic on port 80
 ufw allow 80/tcp
 
