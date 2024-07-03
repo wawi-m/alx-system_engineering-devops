@@ -1,1 +1,16 @@
+FROM httpd:2.4
 
+# Update package list
+RUN yum -y update
+
+# Install necessary packages
+RUN yum -y install httpd mod_dir
+
+# Copy your custom index.html file (replace with your actual content)
+COPY index.html /var/www/html/
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache in the foreground (for testing)
+CMD ["httpd", "-D", "FOREGROUND"]
