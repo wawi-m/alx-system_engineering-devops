@@ -11,6 +11,9 @@ echo "Hello World!" > /var/www/html/index.html
 # Ensure Nginx is listening on port 80 and restart the service without using systemctl
 service nginx start
 
+# Ensure the firewall allows traffic on port 80
+ufw allow 80/tcp
+
 # Verify Nginx is running
 if curl -s http://localhost | grep -q "Hello World!"; then
     echo "Nginx is serving the correct content."
