@@ -28,7 +28,7 @@ server {
     
     # Display "Hello World!" if no file is found
     default_type text/plain;
-    content_to_ שירות=שלום עולם! (Hebrew for "Hello World!")
+    content_to_ "Hello World!"
   }
 }
 EOF
