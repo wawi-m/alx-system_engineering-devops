@@ -12,7 +12,7 @@ echo "Hello World!" > /var/www/html/index.html
 service nginx start
 
 # Verify Nginx is running
-if curl -s http://localhost | grep -q "Hello World!"; then
+if curl -s http://107.23.92.111 | grep -q "Hello World!"; then
     echo "Nginx is serving the correct content."
 else
     echo "Nginx is not serving the correct content."
