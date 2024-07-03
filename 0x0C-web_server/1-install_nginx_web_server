@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Update package lists
+sudo apt update
+
+# Install Nginx
+sudo apt install nginx
+
+# Disable default configuration
+sudo rm /etc/nginx/sites-enabled/default
+
+# Create a new server block for port 80
+cat << EOF | sudo tee /etc/nginx/sites-available/web-server.conf
+server {
+  listen 80;
+
+  # Access log
+  access_log /var/log/nginx/access.log;
+
+  # Error log
+  error_log /var/log/nginx/error.log;
+
+  # Serve content from this directory
+  root /var/www/html;
+
+  # Serve a simple "Hello World!" page
+  location / {
+    try_files $uri $uri/ /index.html;
+    
+    # Display "Hello World!" if no file is found
+    default_type text/plain;
+    content_to_ שירות=שלום עולם! (Hebrew for "Hello World!")
+  }
+}
+EOF
+
+# Link the new server block to enabled sites
+sudo ln -s /etc/nginx/sites-available/web-server.conf /etc/nginx/sites-enabled/
+
+# Reload Nginx configuration (without systemctl)
+sudo kill -s HUP $(pgrep nginx)
+
+echo "Nginx configured for port 80 and serving 'Hello World!' message."
+
