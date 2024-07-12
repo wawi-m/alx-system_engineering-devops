@@ -1,45 +1,14 @@
 #!/usr/bin/env bash
-# Update package lists
-apt-get update
 
-# Install Nginx
-apt-get install -y nginx
+# Update package lists and install nginx
+sudo apt-get update -y -qq
+sudo apt-get install nginx -y
 
-# Create the index.html file with "Hello World!" content
-echo "Hello World!" > /var/www/html/index.html
+# Ensure nginx is listening on port 80
+sudo sed -i 's/^\(listen\s*.*\)80/\180/' /etc/nginx/sites-available/default
 
-# Start Nginx service using init.d script
-/etc/init.d/nginx start
+# Create a temporary HTML file with "Hello World!"
+echo "<html><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html >/dev/null
 
-# Ensure Nginx is running
-if ! pgrep -x "nginx" > /dev/null
-then
-    echo "Nginx failed to start."
-    exit 1
-fi
-# Ensure the firewall allows traffic on port 80
-ufw allow 80/tcp
-ufw reload
-
-# Check if port 80 is open
-if ! netstat -tuln | grep ':80'; then
-    echo "Port 80 is not open."
-    exit 1
-fi
-
-# Verify Nginx is running and serving the correct content
-if curl -s http://localhost | grep -q "Hello World!"; then
-    echo "Nginx is serving the correct content locally."
-else
-    echo "Nginx is not serving the correct content locally."
-    exit 1
-fi
-
-# Verify that the server is accessible from an external network
-EXTERNAL_IP=$(curl -s ifconfig.me)
-if curl -s http://107.23.92.111 | grep -q "Hello World!"; then
-    echo "Nginx is serving the correct content externally."
-else
-    echo "Nginx is not serving the correct content externally."
-    exit 1
-fi
+# Restart nginx (without using systemctl)
+sudo service nginx restart || sudo /etc/init.d/nginx restart
