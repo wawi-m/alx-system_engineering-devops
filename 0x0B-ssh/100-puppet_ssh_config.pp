@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
 # change conf using puppet
+#!/usr/bin/env bash
 
 file { '~/.ssh/config':
   ensure => 'present',
