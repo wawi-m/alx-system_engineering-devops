@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # change conf using puppet
 
-file { '~/.ssh/config':
+file { '/etc/ssh/ssh_config':
   ensure => 'present',
 }
 
