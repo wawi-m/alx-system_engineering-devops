@@ -1,25 +1,14 @@
 #!/usr/bin/env bash
 # Check for the number of arguments passed
-if [ $# -lt 4 ]; then
-  echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-  exit 1
-fi
-
-# Extract arguments
-file_path="$1"
-server_ip="$2"
-username="$3"
-key_path="$4"
-
-# Disable strict host key checking (not recommended for production)
-ssh -o StrictHostKeyChecking=no -i "$key_path" $username@$server_ip << EOF
-  # Transfer the file to the user's home directory
-  scp -p "$file_path" ~/
-EOF
-
-# Check the exit code of the scp command
-if [ $? -eq 0 ]; then
-  echo "File transfer successful!"
+if [ $# -lt 4 ] 
+then
+  echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 else
-  echo "Error: File transfer failed."
+	# Extract arguments
+	file_path="$1"
+	server_ip="$2"
+	username="$3"
+	key_path="$4"
+	# Disable strict host key checking
+	scp -o StrictHostKeyChecking=no -i "$key_path" "$file_path" $username@$server_ip:~
 fi
