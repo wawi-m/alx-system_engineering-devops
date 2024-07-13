@@ -6,7 +6,7 @@ sudo apt-get install nginx -y
 sudo service nginx start
 # Edit permissions
 sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
+sudo chmod -R 755 /var/www/html
 # Backup default index.html file
 sudo cp index.nginx-debian.html index.nginx-debian.html.bak
 # Create new index
