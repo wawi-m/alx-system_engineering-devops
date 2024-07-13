@@ -4,8 +4,6 @@ sudo apt-get update -y -qq
 sudo apt-get install nginx -y
 # Start nginx (without using systemctl)
 sudo service nginx start
-# Ensure nginx is listening on port 80
-sudo ufw allow 'Nginx HTTP'
 # Permissions
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
