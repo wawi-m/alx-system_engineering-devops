@@ -6,6 +6,11 @@ sudo apt-get install nginx -y
 sudo service nginx start
 # Ensure nginx is listening on port 80
 sudo ufw allow 'Nginx HTTP'
+# Permissions
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+# Backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 # Create new index
 echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 # Enable config
