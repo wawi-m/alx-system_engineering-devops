@@ -4,14 +4,6 @@ sudo apt-get update -y -qq
 sudo apt-get install nginx -y
 # Start nginx (without using systemctl)
 sudo service nginx start
-# Permissions
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-# Backup default index
-sudo cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bak
-# Create new index
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
-# Enable config
-sudo ln -s /etc/nginx/sites-available/hello_world /etc/nginx/sites-enabled/
+echo "Hello World!" > /var/www/html/index.html
 # Restart nginx
 sudo service nginx restart
