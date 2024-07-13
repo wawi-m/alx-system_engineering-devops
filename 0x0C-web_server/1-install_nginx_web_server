@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-
 # Update package lists and install nginx
-sudo apt-get update -y -qq
+sudo apt-get update -y -qq 
 sudo apt-get install nginx -y
-
+# Start nginx (without using systemctl)
+sudo service nginx start
 # Ensure nginx is listening on port 80
 sudo sed -i 's/^\(listen\s*.*\)80/\180/' /etc/nginx/sites-available/default
-
-# Create a temporary HTML file with "Hello World!"
-echo "<html><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html >/dev/null
-
-# Restart nginx (without using systemctl)
-sudo service nginx restart || sudo /etc/init.d/nginx restart
+# Create new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+# Restart nginx
+sudo service nginx restart
