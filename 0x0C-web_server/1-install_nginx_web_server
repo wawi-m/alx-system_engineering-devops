@@ -5,8 +5,10 @@ sudo apt-get install nginx -y
 # Start nginx (without using systemctl)
 sudo service nginx start
 # Ensure nginx is listening on port 80
-sudo tee /etc/nginx/sites-available/hello_world > /dev/null
+sudo ufw allow 'Nginx HTTP'
 # Create new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+# Enable config
 sudo ln -s /etc/nginx/sites-available/hello_world /etc/nginx/sites-enabled/
 # Restart nginx
 sudo service nginx restart
