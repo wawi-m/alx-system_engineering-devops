@@ -10,7 +10,7 @@ sudo chmod -R 755 /var/www/html
 # Backup default index.html file
 sudo cp index.nginx-debian.html index.nginx-debian.html.bak
 # Create new index
-myindex='<!DOCTYPE html>\n<html>\n<head>\n    <title>Hello World!</title>\n</head>\n<body>\n    <h1>Hello World!</h1>\n</body>\n</html>'
-echo -e "$myindex" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+# Creating new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
 # Restart nginx
 sudo service nginx restart
