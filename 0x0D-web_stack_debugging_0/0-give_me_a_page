@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
-
-# Expose port 80
-EXPOSE 80
-
 # Start Apache in the foreground (for testing)
-CMD ["httpd", "-D", "FOREGROUND"]
+service apache2nstart
