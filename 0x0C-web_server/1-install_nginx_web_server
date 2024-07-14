@@ -1,45 +1,16 @@
 #!/usr/bin/env bash
-# Update package lists
-apt-get update
-
-# Install Nginx
-apt-get install -y nginx
-
-# Create the index.html file with "Hello World!" content
-echo "Hello World!" > /var/www/html/index.html
-
-# Start Nginx service using init.d script
-/etc/init.d/nginx start
-
-# Ensure Nginx is running
-if ! pgrep -x "nginx" > /dev/null
-then
-    echo "Nginx failed to start."
-    exit 1
-fi
-# Ensure the firewall allows traffic on port 80
-ufw allow 80/tcp
-ufw reload
-
-# Check if port 80 is open
-if ! netstat -tuln | grep ':80'; then
-    echo "Port 80 is not open."
-    exit 1
-fi
-
-# Verify Nginx is running and serving the correct content
-if curl -s http://localhost | grep -q "Hello World!"; then
-    echo "Nginx is serving the correct content locally."
-else
-    echo "Nginx is not serving the correct content locally."
-    exit 1
-fi
-
-# Verify that the server is accessible from an external network
-EXTERNAL_IP=$(curl -s ifconfig.me)
-if curl -s http://107.23.92.111 | grep -q "Hello World!"; then
-    echo "Nginx is serving the correct content externally."
-else
-    echo "Nginx is not serving the correct content externally."
-    exit 1
-fi
+# Update package lists and install nginx
+sudo apt-get update -y -qq 
+sudo apt-get install nginx -y
+# Start nginx (without using systemctl)
+sudo service nginx start
+# Edit permissions
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www/html
+# Backup default index.html file
+sudo cp index.nginx-debian.html index.nginx-debian.html.bak
+# Create new index
+# Creating new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+# Restart nginx
+sudo service nginx restart

@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # configures a server to listening on port 80 of all servers active IPv4 IPs
 
 sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
 echo "" | sudo dd status=none of=/run/nginx.pid
+=======
+# Start Apache
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install apache2
+echo "Hello Holberton" | sudo tee -a /var/www/html/index.html
+sudo service  apache2 restart
+>>>>>>> e42369b81a355afca7455236f81f9d26d180243e
