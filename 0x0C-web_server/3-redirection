@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Update package lists and install nginx
+sudo apt-get update -y -qq 
+sudo apt-get install nginx -y
+# Start nginx (without using systemctl)
+sudo service nginx start
+# Edit permissions
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www/html
+# Backup default index.html file
+sudo cp index.nginx-debian.html index.nginx-debian.html.bak
+# Create new index
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+# Set /redirect_me to youtube location
+sudo sed -i '10i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+# Restart nginx
+sudo service nginx restart
