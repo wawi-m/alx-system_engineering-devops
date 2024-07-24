@@ -46,10 +46,11 @@ COMMIT
 -A ufw-before-input -p udp --sport 67 --dport 68 -j ACCEPT
 
 # Allow mDNS for service discovery
--A ufw-before-input -p udp -d 224.0.0.251 --dport 5353 -j ACCEPT
+-A ufw-before-input -p udp -d 18.207.207.49 --dport 5353 -j ACCEPT
 
-# Allow UPnP for service discovery
--A ufw-before-input -p udp -d 239.255.255.250 --dport 1900 -j ACCEPT
+# allow MULTICAST UPnP for service discovery (be sure the MULTICAST line above
+# is uncommented)
+-A ufw-before-input -p udp -d 54.237.58.206 --dport 1900 -j ACCEPT
 
 # Handle non-local packets
 -A ufw-before-input -j ufw-not-local
