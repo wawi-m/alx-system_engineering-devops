@@ -9,6 +9,9 @@ import sys
 
 REST_API = "https://jsonplaceholder.typicode.com"
 
+def fetch_employee_data(employee_id):
+    """Fetch employee data and TODO tasks from the API."""
+    
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         if re.fullmatch(r'\d+', sys.argv[1]):
