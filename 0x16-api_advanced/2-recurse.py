@@ -6,7 +6,7 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=""):
-    """Get all hot posts"""
+    """Returns a subreddit's all hot articles"""
     if after is None:
         return []
 
