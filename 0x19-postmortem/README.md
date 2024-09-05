@@ -1,5 +1,7 @@
  # My first postmortem
-
+_{1. Make people want to read your postmortem
+We are constantly stormed by a quantity of information, it’s tough to get people to read you.
+Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.}_
 ## Incident Report on 
  Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. 
 
