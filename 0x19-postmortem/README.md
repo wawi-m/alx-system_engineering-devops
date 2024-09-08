@@ -1,5 +1,5 @@
  # My first postmortem
-![Uploading stickergiant-servers-are-down.gif…]()
+
 
 _{1. 
 Make people want to read your postmortem
