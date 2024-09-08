@@ -8,3 +8,11 @@ This repository contains System engineering and DevOps Projects in the following
 - On Call
 - Configuration Management (CI/CD)
 - Web Stack Debugging
+
+Stacks used include:
+ * Shell
+ * Python
+ * Javascript
+ * Puppet
+ * Ruby
+ * MySQL
